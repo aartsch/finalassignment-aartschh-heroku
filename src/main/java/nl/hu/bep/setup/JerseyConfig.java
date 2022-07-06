@@ -9,6 +9,6 @@ import javax.ws.rs.ApplicationPath;
 public class JerseyConfig extends ResourceConfig {
     public JerseyConfig() {
         register(RolesAllowedDynamicFeature.class);
-        packages("nl.hu.bep.webservices");
+        packages("nl.hu.bep.webservices, nl.hu.bep.security");
     }
 }

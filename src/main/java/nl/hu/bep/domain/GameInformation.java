@@ -4,7 +4,7 @@ public class GameInformation {
     private String apiversion = "1";
     private String author = "";
     private String color = "#888888";
-    private String head = "default";
+    private String head = "defaultt";
     private String tail = "default\"";
     private String version = "0.0.1-beta";
 

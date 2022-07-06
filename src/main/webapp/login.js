@@ -17,7 +17,7 @@ function refresh() {
 
 document.forms.login.addEventListener('submit', e => {
     e.preventDefault();
-    service.login(document.forms.login.username.value, document.forms.login.password.value).then(() => {
+    service.login().then(() => {
         window.location.reload();
     })
 
@@ -32,11 +32,11 @@ document.forms.logout.addEventListener('submit', e => {
 
 refresh();
 
-service.getUser().then(user => {
+/*service.getUser().then(user => {
     if (!user) {
         service.logout();
     }
     refresh();
-})
+})*/
 
 
