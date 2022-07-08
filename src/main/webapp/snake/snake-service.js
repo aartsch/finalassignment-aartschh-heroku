@@ -10,20 +10,23 @@ export default class SnakeService {
         let head = updatedSnake.head
         let tail = updatedSnake.tail
 
-        let requestData = {
-            color,
-            head,
-            tail
+        let jsonRequestBody = {
+            "color": color,
+            "head": head,
+            "tail": tail
         }
 
         let fetchOptions = {
             method: "PATCH",
-            body: JSON.stringify(requestData),
+            body: JSON.stringify(jsonRequestBody),
             headers: {"Content-type": "application/json"}
         }
 
         //TODO: update je slang aan de server-kant met de nieuwe gegevens
         return fetch("/restservices/snake", fetchOptions)
             .then(response => response.json())
+            .then(function (myJson) {
+                console.log(myJson)
+            })
     }
 }
