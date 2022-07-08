@@ -22,13 +22,15 @@ export default class GamesService {
         //TODO: gebruik fetch om een enkele game (bij de server) te deleten
         let fetchOptions = {
             method: "DELETE",
-            body: JSON.stringify(gameId),
             headers: {
                 "Content-type": "application/json",
             }
         }
 
-        return fetch("/restservices/snake/game", fetchOptions)
-            .then(response => response.json())
+        return fetch("/restservices/snake/game" + gameId, fetchOptions)
+            .then(function (response) {
+                if (response.ok) console.log("game deleted")
+                else if (response.status == 404) console.log("game not found")
+            })
     }
 }

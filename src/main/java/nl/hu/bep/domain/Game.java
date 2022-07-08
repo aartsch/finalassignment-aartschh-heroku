@@ -6,6 +6,7 @@ import java.util.Objects;
 
 public class Game {
     private String id;
+    private int turn;
     private static List<Game> allGames = new ArrayList<>();
 
     public Game(String id) {
@@ -27,6 +28,14 @@ public class Game {
         return Objects.hash(id);
     }
 
+    public int getTurn() {
+        return turn;
+    }
+
+    public void setTurn(int turn) {
+        this.turn = turn;
+    }
+
     public String getId() {
         return id;
     }
@@ -34,13 +43,24 @@ public class Game {
     public static List<String> getIdsFromAllGames() {
         List<String> gameIds = new ArrayList<>();
 
-        for(Game g : allGames) {
+        for (Game g : allGames) {
             gameIds.add(g.getId());
         }
         return gameIds;
     }
 
-    public static void RemoveGame(String id) {
-        allGames.removeIf(game -> game.getId().equals(id));
+    public static boolean removeGame(String id) {
+        return allGames.removeIf(game -> game.getId().equals(id));
     }
+
+    public static String getGameDetailsById(String id) {
+        Game game1 = allGames.stream()
+                .filter(game -> id.equals(game.getId()))
+                .findAny()
+                .orElse(null);
+
+        assert game1 != null;
+        return game1.getId() + " " + game1.getTurn();
+    }
+
 }
