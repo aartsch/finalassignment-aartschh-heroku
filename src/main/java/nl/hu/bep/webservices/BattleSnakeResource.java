@@ -1,5 +1,6 @@
 package nl.hu.bep.webservices;
 
+import nl.hu.bep.domain.Game;
 import nl.hu.bep.domain.GameInformation;
 import nl.hu.bep.domain.Move;
 import org.glassfish.jersey.server.model.internal.ResourceMethodInvocationHandlerFactory;
@@ -7,6 +8,8 @@ import org.glassfish.jersey.server.model.internal.ResourceMethodInvocationHandle
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.util.ArrayList;
+import java.util.List;
 
 @Path("/snake")
 public class BattleSnakeResource {
@@ -35,11 +38,14 @@ public class BattleSnakeResource {
     @POST
     @Path("/start")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response startGame() {
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response startGame(BattleSnakeRequest request) {
+        Game game = new Game((String) request.game.get("id"));
 
-        return Response.ok().build();
+        System.out.println(Game.getIdsFromAllGames());
+
+        return Response.ok(game).build();
     }
-
 
     @POST
     @Path("/end")
@@ -48,6 +54,18 @@ public class BattleSnakeResource {
 
         return Response.ok().build();
     }
+
+    @GET
+    @Path("/game")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getAllGameIds() {
+        List<String> allGameIds = Game.getIdsFromAllGames();
+
+
+        return Response.ok(allGameIds).build();
+    }
+
+
 
     @POST
     @Path("/move")
