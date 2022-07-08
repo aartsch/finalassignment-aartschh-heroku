@@ -136,9 +136,9 @@ public class BattleSnakeResource {
         }
         // (als head top coordinate + 1 > 10 && right coordinate + 1 > 10  )Move.right, move.down
         if(yHead + 1 >= 5   ) {
-            move = new MoveResponse(Move.RIGHT, "Going up!");
+            move = new MoveResponse("RIGHT", "Going up!");
         } else {
-            move = new MoveResponse(Move.RIGHT, "Going up!");
+            move = new MoveResponse("RIGHT", "Going up!");
         }
 
         return Response.ok(move).build();
