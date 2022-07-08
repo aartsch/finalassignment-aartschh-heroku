@@ -10,7 +10,7 @@ import javax.ws.rs.core.Response;
 
 @Path("/snake")
 public class BattleSnakeResource {
-    private GameInformation info = new GameInformation();
+    private static GameInformation info = new GameInformation();
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
@@ -26,8 +26,8 @@ public class BattleSnakeResource {
         System.out.println(request.color);
 
         info.setColor(request.color);
-        info.setColor(request.head);
-        info.setColor(request.tail);
+        info.setHead(request.head);
+        info.setTail(request.tail);
 
         return Response.ok(info).build();
     }
