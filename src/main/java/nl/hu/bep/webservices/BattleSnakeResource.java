@@ -21,7 +21,7 @@ public class BattleSnakeResource {
         return Response.ok(info).build();
     }
 
-    @PUT
+    @PATCH
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Response updateSnake(GameInformationRequest request) {
