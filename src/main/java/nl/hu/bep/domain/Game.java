@@ -7,12 +7,37 @@ import java.util.Objects;
 public class Game {
     private String id;
     private int turn;
+    private GameState state;
     private static List<Game> allGames = new ArrayList<>();
 
     public Game(String id) {
         this.id = id;
 
         if (!allGames.contains(this)) allGames.add(this);
+    }
+
+    public Game() {
+
+    }
+
+    public GameState getState() {
+        return state;
+    }
+
+    public void setState(GameState state) {
+        this.state = state;
+    }
+
+    public int getTurn() {
+        return turn;
+    }
+
+    public void setTurn(int turn) {
+        this.turn = turn;
+    }
+
+    public String getId() {
+        return id;
     }
 
     @Override
@@ -28,16 +53,8 @@ public class Game {
         return Objects.hash(id);
     }
 
-    public int getTurn() {
-        return turn;
-    }
-
-    public void setTurn(int turn) {
-        this.turn = turn;
-    }
-
-    public String getId() {
-        return id;
+    public static List<Game> getAllGames() {
+        return allGames;
     }
 
     public static List<String> getIdsFromAllGames() {
@@ -62,5 +79,6 @@ public class Game {
         assert game1 != null;
         return game1.getId() + " " + game1.getTurn();
     }
+
 
 }

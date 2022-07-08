@@ -15,7 +15,7 @@ export default class GamesService {
                 "Content-type": "application/json",
             }
         }
-        return fetch("/restservices/snake/game" + gameId, fetchOptions)
+        return fetch("/restservices/snake/game/" + gameId, fetchOptions)
             .then(response => response.json())
         }
 
@@ -28,7 +28,7 @@ export default class GamesService {
             }
         }
 
-        return fetch("/restservices/snake/game" + gameId, fetchOptions)
+        return fetch("/restservices/snake/game/" + gameId, fetchOptions)
             .then(function (response) {
                 if (response.ok) console.log("game deleted")
                 else if (response.status == 404) console.log("game not found")

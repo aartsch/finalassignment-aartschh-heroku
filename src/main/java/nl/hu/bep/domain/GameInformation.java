@@ -1,5 +1,7 @@
 package nl.hu.bep.domain;
 
+import java.util.Objects;
+
 public class GameInformation {
     private String apiversion = "1";
     private String author = "aart";
@@ -54,5 +56,18 @@ public class GameInformation {
 
     public void setVersion(String version) {
         this.version = version;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        GameInformation that = (GameInformation) o;
+        return Objects.equals(apiversion, that.apiversion) && Objects.equals(author, that.author) && Objects.equals(color, that.color) && Objects.equals(head, that.head) && Objects.equals(tail, that.tail) && Objects.equals(version, that.version);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(apiversion, author, color, head, tail, version);
     }
 }
