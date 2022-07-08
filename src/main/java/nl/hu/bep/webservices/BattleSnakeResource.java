@@ -65,6 +65,14 @@ public class BattleSnakeResource {
         return Response.ok(allGameIds).build();
     }
 
+    @DELETE
+    @Path("/game/{id}")
+    public Response removeGameById(@PathParam("id") String id) {
+        Game.RemoveGame(id);
+
+        return Response.ok().build();
+    }
+
 
 
     @POST
