@@ -17,7 +17,7 @@ export default class SnakeService {
         }
 
         let fetchOptions = {
-            method: "PUT",
+            method: "POST",
             body: JSON.stringify(requestData),
             headers: {"Content-type": "application/json"}
         }
