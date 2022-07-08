@@ -124,36 +124,25 @@ public class BattleSnakeResource {
     //niet met de mooie manier van requests gedaan omdat ik niet de head coordinates kon krijgen
     public Response move(String body ) {
         JsonReader reader = Json.createReader(new StringReader(body));
-        int xHead =  reader.readObject().getJsonObject("you").getJsonObject("head").getInt("x");
+        int yHead = reader.readObject().getJsonObject("you").getJsonObject("head").getInt("y");
 
-//        MoveResponse move = null;
-//
-//        Map<String, String> messages = new HashMap<>();
-//        messages.put("error", "This game is already over");
-//
-//        if(Game.getAllGames() == null || game.getState() != GameState.PLAYING) {
-//            return Response.status(Response.Status.CONFLICT).entity(messages).build();
-//        }
-//        // (als head top coordinate + 1 > 10 && right coordinate + 1 > 10  )Move.right, move.down
-//        if(yHead + 1 >= 5   ) {
-//            move = new MoveResponse("RIGHT", "Going up!");
-//        } else {
-//            move = new MoveResponse("RIGHT", "Going up!");
-//        }
-//
-//        return Response.ok(move).build();*/
         MoveResponse move = null;
 
-        int i = 0;
+        Map<String, String> messages = new HashMap<>();
+        messages.put("error", "This game is already over");
 
-        if(i % 2 == 0) {
-            i++;
-            move = new MoveResponse("right", "Going up!");
-        } else {
-            i++;
-            move = new MoveResponse("up", "Going up!");
+        if(Game.getAllGames() == null || game.getState() != GameState.PLAYING) {
+            return Response.status(Response.Status.CONFLICT).entity(messages).build();
         }
+        // (als head top coordinate + 1 > 10 && right coordinate + 1 > 10  )Move.right, move.down
+        if(yHead + 1 >= 10   ) {
+            move = new MoveResponse(Move.RIGHT, "Going right!");
+        } else {
+            move = new MoveResponse(Move.UP, "Going up!");
+        }
+
         return Response.ok(move).build();
     }
+
 }
 
