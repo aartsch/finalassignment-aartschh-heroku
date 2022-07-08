@@ -124,7 +124,7 @@ public class BattleSnakeResource {
     //niet met de mooie manier van requests gedaan omdat ik niet de head coordinates kon krijgen
     public Response move(String body ) {
         JsonReader reader = Json.createReader(new StringReader(body));
-        int yHead =  reader.readObject().getJsonObject("you").getJsonObject("head").getInt("y");
+        int xHead =  reader.readObject().getJsonObject("you").getJsonObject("head").getInt("x");
 
 //        MoveResponse move = null;
 //
@@ -144,8 +144,8 @@ public class BattleSnakeResource {
 //        return Response.ok(move).build();*/
         MoveResponse move = null;
 
-        if(yHead + 1 >= 10   ) {
-            move = new MoveResponse("RIGHT", "Going up!");
+        if(xHead + 1 >= 9   ) {
+            move = new MoveResponse("right", "Going up!");
         } else {
             move = new MoveResponse("up", "Going up!");
         }
