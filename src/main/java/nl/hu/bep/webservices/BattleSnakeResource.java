@@ -135,7 +135,7 @@ public class BattleSnakeResource {
             return Response.status(Response.Status.CONFLICT).entity(messages).build();
         }
         // (als head top coordinate + 1 > 10 && right coordinate + 1 > 10  )Move.right, move.down
-        if(yHead + 1 >= 10   ) {
+        if(yHead + 1 >= 5   ) {
             move = new MoveResponse(Move.RIGHT, "Going up!");
         } else {
             move = new MoveResponse(Move.UP, "Going up!");
