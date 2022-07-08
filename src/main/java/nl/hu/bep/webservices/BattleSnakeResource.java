@@ -19,7 +19,11 @@ public class BattleSnakeResource {
         String head = (String) request.customizations.get("head");
         String tail = (String) request.customizations.get("tail");
 
+        System.out.println(tail);
+
         GameInformation info = new GameInformation(color, head, tail);
+
+
 
         return Response.ok(info).build();
     }
@@ -46,7 +50,8 @@ public class BattleSnakeResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Response move(BattleSnakeRequest request ) {
 
-        System.out.println(request.you.get("name"));
+        System.out.println(  request.you.get("customizations"));
+
 
         MoveResponse move;
 
