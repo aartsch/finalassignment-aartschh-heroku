@@ -9,14 +9,15 @@ export default class GamesService {
         //TODO: fetch de details van een enkele game. Let wel, het staat vrij wat voor informatie je precies toont
         //zolang je maar laat zien dat je data kunt opslaan over meerdere zetten heen. Dus deze dummy-data is puur
         //ter illustratie.
-        return Promise.resolve({
-            id: 'altijd-dezelfde',
-            aantalBeurten: 42,
-            meestBezochtePlek: { x: 3, y: 5},
-            redenEind: 'muur-geraakt',
-            aantalBochtjesLinksaf: 27
-        });
-    }
+        let fetchOptions = {
+            method: "GET",
+            headers: {
+                "Content-type": "application/json",
+            }
+        }
+        return fetch("/restservices/snake/game" + gameId, fetchOptions)
+            .then(response => response.json())
+        }
 
     async removeReplay(gameId) {
         //TODO: gebruik fetch om een enkele game (bij de server) te deleten
