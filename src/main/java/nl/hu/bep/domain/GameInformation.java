@@ -3,7 +3,7 @@ package nl.hu.bep.domain;
 public class GameInformation {
     private String apiversion = "1";
     private String author = "aart";
-    private String color = "#888888";
+    private String color = "#B0523E";
     private String head = "defaultt";
     private String tail = "default";
     private String version = "0.0.1-beta";
