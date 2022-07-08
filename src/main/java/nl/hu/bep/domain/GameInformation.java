@@ -1,21 +1,12 @@
 package nl.hu.bep.domain;
 
 public class GameInformation {
-    private String apiversion;
-    private String author ;
-    private String color;
+    private String apiversion = "1";
+    private String author = "aart";
+    private String color = "#888888";
     private String head = "defaultt";
-    private String tail = "default\"";
-    private String version ;
-
-    public GameInformation(String color, String head, String tail) {
-        this.apiversion = "1";
-        this.author = "aart";
-        this.color = color;
-        this.head = head;
-        this.tail = tail;
-        this.version = "0.0.1-beta";
-    }
+    private String tail = "default";
+    private String version = "0.0.1-beta";
 
     public String getApiversion() {
         return apiversion;

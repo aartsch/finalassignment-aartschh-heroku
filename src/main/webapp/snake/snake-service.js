@@ -6,7 +6,24 @@ export default class SnakeService {
     }
 
     async updateSnake(updatedSnake) {
+        let color = updatedSnake.color
+        let head = updatedSnake.head
+        let tail = updatedSnake.tail
+
+        let requestData = {
+            color,
+            head,
+            tail
+        }
+
+        let fetchOptions = {
+            method: "PUT",
+            body: JSON.stringify(requestData),
+            headers: {"Content-type": "application/json"}
+        }
+
         //TODO: update je slang aan de server-kant met de nieuwe gegevens
-        return Promise.resolve();
+        return fetch("/restservices/snake", fetchOptions)
+            .then(response => response.json())
     }
 }

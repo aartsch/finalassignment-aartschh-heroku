@@ -10,20 +10,24 @@ import javax.ws.rs.core.Response;
 
 @Path("/snake")
 public class BattleSnakeResource {
+    private GameInformation info = new GameInformation();
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
+    public Response getGameInfo() {
+
+        return Response.ok(info).build();
+    }
+
+    @PUT
+    @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response getGameInfo(BattleSnakeRequest request) {
-        String color = (String) request.customizations.get("color");
-        String head = (String) request.customizations.get("head");
-        String tail = (String) request.customizations.get("tail");
+    public Response updateSnake(GameInformationRequest request) {
+        System.out.println(request.color);
 
-        System.out.println(tail);
-
-        GameInformation info = new GameInformation(color, head, tail);
-
-
+        info.setColor(request.color);
+        info.setColor(request.head);
+        info.setColor(request.tail);
 
         return Response.ok(info).build();
     }
