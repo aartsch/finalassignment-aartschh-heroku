@@ -144,9 +144,13 @@ public class BattleSnakeResource {
 //        return Response.ok(move).build();*/
         MoveResponse move = null;
 
-        if(xHead != 11   ) {
+        int i = 0;
+
+        if(i % 2 == 0) {
+            i++;
             move = new MoveResponse("right", "Going up!");
         } else {
+            i++;
             move = new MoveResponse("up", "Going up!");
         }
         return Response.ok(move).build();
