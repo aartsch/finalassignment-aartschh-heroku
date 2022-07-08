@@ -1,6 +1,7 @@
 package nl.hu.bep.webservices;
 
 import nl.hu.bep.domain.GameInformation;
+import nl.hu.bep.domain.Move;
 import org.glassfish.jersey.server.model.internal.ResourceMethodInvocationHandlerFactory;
 
 import javax.ws.rs.*;
@@ -12,8 +13,13 @@ public class BattleSnakeResource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getGameInfo() {
-        GameInformation info = new GameInformation();
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response getGameInfo(BattleSnakeRequest request) {
+        String color = (String) request.customizations.get("color");
+        String head = (String) request.customizations.get("head");
+        String tail = (String) request.customizations.get("tail");
+
+        GameInformation info = new GameInformation(color, head, tail);
 
         return Response.ok(info).build();
     }
@@ -45,7 +51,7 @@ public class BattleSnakeResource {
         MoveResponse move;
 
 
-        move = new MoveResponse("up", "Going up!");
+        move = new MoveResponse(Move.UP, "Going up!");
 
 
         return Response.ok(move).build();

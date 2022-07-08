@@ -8,4 +8,5 @@ import java.util.Map;
 public class BattleSnakeRequest {
     public int turn;
     public Map<String, Object> you;
+    public Map<String, Object> customizations;
 }
