@@ -123,7 +123,7 @@ public class BattleSnakeResource {
     @Produces(MediaType.APPLICATION_JSON)
     //niet met de mooie manier van requests gedaan omdat ik niet de head coordinates kon krijgen
     public Response move(String body ) {
-        JsonReader reader = Json.createReader(new StringReader(body));
+        /*JsonReader reader = Json.createReader(new StringReader(body));
         int yHead =  reader.readObject().getJsonObject("you").getJsonObject("head").getInt("y");
 
         MoveResponse move = null;
@@ -141,6 +141,9 @@ public class BattleSnakeResource {
             move = new MoveResponse("RIGHT", "Going up!");
         }
 
+        return Response.ok(move).build();*/
+
+        MoveResponse move = new MoveResponse("right", "going right");
         return Response.ok(move).build();
     }
 }
