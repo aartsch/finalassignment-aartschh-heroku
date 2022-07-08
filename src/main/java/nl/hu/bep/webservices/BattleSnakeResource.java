@@ -40,6 +40,7 @@ public class BattleSnakeResource {
         return Response.ok().build();
     }
 
+
     @POST
     @Path("/end")
     @Consumes(MediaType.APPLICATION_JSON)
