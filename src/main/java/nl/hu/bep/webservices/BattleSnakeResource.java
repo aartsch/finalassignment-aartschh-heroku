@@ -5,9 +5,14 @@ import nl.hu.bep.domain.GameInformation;
 import nl.hu.bep.domain.GameState;
 import nl.hu.bep.domain.Move;
 
+import javax.json.Json;
+import javax.json.JsonObject;
+import javax.json.JsonReader;
+import javax.json.JsonValue;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.io.StringReader;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -116,18 +121,25 @@ public class BattleSnakeResource {
     @Path("/move")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response move(BattleSnakeRequest request ) {
-        MoveResponse move;
+    //niet met de mooie manier van requests gedaan omdat ik niet de head coordinates kon krijgen
+    public Response move(String body ) {
+        JsonReader reader = Json.createReader(new StringReader(body));
+        int yHead =  reader.readObject().getJsonObject("you").getJsonObject("head").getInt("y");
 
+        MoveResponse move = null;
 
         Map<String, String> messages = new HashMap<>();
         messages.put("error", "This game is already over");
 
-        if(game.getState() != GameState.PLAYING) {
+        if(Game.getAllGames() == null || game.getState() != GameState.PLAYING) {
             return Response.status(Response.Status.CONFLICT).entity(messages).build();
         }
-
-        move = new MoveResponse(Move.UP, "Going up!");
+        // (als head top coordinate + 1 > 10 && right coordinate + 1 > 10  )Move.right, move.down
+        if(yHead + 1 >= 11   ) {
+            move = new MoveResponse(Move.RIGHT, "Going up!");
+        } else {
+            move = new MoveResponse(Move.UP, "Going up!");
+        }
 
         return Response.ok(move).build();
     }

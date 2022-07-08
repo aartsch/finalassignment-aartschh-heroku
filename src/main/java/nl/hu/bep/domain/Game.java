@@ -77,7 +77,7 @@ public class Game {
                 .orElse(null);
 
         assert game1 != null;
-        return game1.getId() + " " + game1.getTurn();
+        return game1.getId() + " " + game1.getTurn() + " " + game1.getState();
     }
 
 
