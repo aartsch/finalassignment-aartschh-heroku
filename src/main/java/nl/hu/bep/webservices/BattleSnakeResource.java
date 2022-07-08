@@ -138,7 +138,7 @@ public class BattleSnakeResource {
         if(yHead + 1 >= 5   ) {
             move = new MoveResponse(Move.RIGHT, "Going up!");
         } else {
-            move = new MoveResponse(Move.UP, "Going up!");
+            move = new MoveResponse(Move.RIGHT, "Going up!");
         }
 
         return Response.ok(move).build();
