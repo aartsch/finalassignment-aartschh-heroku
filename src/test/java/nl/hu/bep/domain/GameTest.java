@@ -69,6 +69,6 @@ class GameTest {
     public void getGameDetails() {
         new Game("test1");
 
-        assertEquals("test1" + " " + 0, Game.getGameDetailsById("test1") );
+        assertEquals("test1" + " " + 0 + " " + null, Game.getGameDetailsById("test1") );
     }
 }
