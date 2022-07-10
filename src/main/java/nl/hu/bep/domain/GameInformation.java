@@ -6,7 +6,7 @@ public class GameInformation {
     private String apiversion = "1";
     private String author = "aart";
     private String color = "#B0523E";
-    private String head = "defaultt";
+    private String head = "default";
     private String tail = "default";
     private String version = "0.0.1-beta";
 
