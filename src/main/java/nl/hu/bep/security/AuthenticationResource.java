@@ -24,8 +24,6 @@ public class AuthenticationResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Response loginWebservice(AuthenticationRequest loginData) {
         //temporary function instead of registering users
-        User.initializeUsers();
-
         for (User user  : User.getAllUsers()) {
 
             if (user.getName().equals(loginData.username) &&

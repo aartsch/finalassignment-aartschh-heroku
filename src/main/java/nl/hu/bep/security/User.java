@@ -17,11 +17,10 @@ public class User implements Principal, Serializable {
         this.username = username;
         this.password = password;
         this.role = role;
+
+        if (!users.contains(this)) users.add(this);
     }
 
-    public static void initializeUsers() {
-        users.add(new User("aart", "wachtwoord", "user"));
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -39,6 +38,14 @@ public class User implements Principal, Serializable {
     @Override
     public String getName() {
         return username;
+    }
+
+    public static List<User> getUsers() {
+        return users;
+    }
+
+    public static void setUsers(List<User> users) {
+        User.users = users;
     }
 
     public String getRole() {

@@ -135,6 +135,7 @@ public class BattleSnakeResource {
             return Response.status(Response.Status.CONFLICT).entity(messages).build();
         }
         // (als head top coordinate + 1 > 10 && right coordinate + 1 > 10  )Move.right, move.down
+        // werkt niet in battle snake maar wel in postman???
         if(yHead + 1 >= 10   ) {
             move = new MoveResponse(Move.RIGHT, "Going right!");
         } else {
